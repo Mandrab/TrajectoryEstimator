@@ -1,4 +1,4 @@
-function main(image_folder)
+function main(image_folder, ball_size)
 
     % create a pattern to match images files in folder
     images = dir(image_folder + "*.png");
@@ -8,6 +8,6 @@ function main(image_folder)
         image = imread(image_name);
 
         % find real world ball position
-        position = ball_position(image);
+        position = ball_position(image, ball_size);
     end
 end
