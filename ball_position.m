@@ -1,8 +1,8 @@
 function [coordinates, radius] = ball_position(image)
     %%%%%%%%%%%%%%%%%%%%%%%%% Segmenting the ball %%%%%%%%%%%%%%%%%%%%%%%%%
 
-    % thresholding the image to extract a first approximation of a ball's 'mask' 
-    raw_mask = threshold_image(image);
+    % thresholding to extract a first approximation of a ball's 'mask' 
+    raw_mask = create_mask(image);
     %imshow(raw_mask);
 
     % obtain a 'better quality' (more omogeneous) mask for the ball
