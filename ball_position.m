@@ -17,7 +17,7 @@ function [coordinates, radius] = ball_position(image)
     %area = bwarea(bw_mask);
     %r = sqrt(area/pi)
     
-    properties = regionprops(bw_mask, {'Centroid', 'EquivDiameter'});
+    properties = regionprops(mask, {'Centroid', 'EquivDiameter'});
     coordinates = properties.Centroid;
     radius = properties.EquivDiameter / 2;
 end
