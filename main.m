@@ -11,16 +11,16 @@ function main(images_folder, ball_size)
         image = imread(image_name);
 
         % find ball position in image
-        balls_data(idx).image_position = ball_position(image, ball_size);
+        balls_data(idx).image_position = ball_position(image);
         
         % TODO calculate ball speed
         %balls_data(idx).speed = ???
         
         % TODO get real world position
-        balls_data(idx).world_position = to_real_world(
-            balls_data(idx).image_position,
-            camera_model,
-            ball_size
+        balls_data(idx).world_position = to_real_world(...
+            balls_data(idx).image_position, ...
+            camera_model, ...
+            ball_size ...
         );
         
         % TODO calculate trajectory
