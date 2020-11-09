@@ -19,5 +19,6 @@ function [coordinates, radius] = ball_position(image)
     
     properties = regionprops(mask, {'Centroid', 'EquivDiameter'});
     coordinates = properties.Centroid;
-    radius = properties.EquivDiameter / 2;
+    diameter = properties.EquivDiameter;
+    radius = diameter / 2;
 end
