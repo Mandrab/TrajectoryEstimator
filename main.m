@@ -1,13 +1,26 @@
-function main(images_folder, camera_model, ball_size)
+function main(images_folder, ball_size)
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Constants %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    CALIBRATION_FOLDER = images_folder + "calibration_images/";
+    TRAJECTORY_FOLDER = images_folder + "trajectory_1/";
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     % create a pattern to match images files in folder
-    images = dir(images_folder + "*.png");
-    
+    images = dir(CALIBRATION_FOLDER + "*.png");
+    camera_model = calibration(images, 40);
+
+    %%%%%%%%%%%%%%%%%%%%%%%% Trajectory Estimation %%%%%%%%%%%%%%%%%%%%%%%%
+
+    % create a pattern to match images files in folder
+    images = dir(TRAJECTORY_FOLDER + "*.png");
+
     % create a data array
     balls_data = [];
 
     for idx = 1:length(images)
-        image_name = images_folder + images(idx).name;
+        image_name = images(idx).folder + "/" + images(idx).name;
         image = imread(image_name);
 
         % find ball position in image
