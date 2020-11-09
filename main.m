@@ -1,4 +1,4 @@
-function main(images_folder, ball_size)
+function main(images_folder, camera_model, ball_size)
 
     % create a pattern to match images files in folder
     images = dir(images_folder + "*.png");
