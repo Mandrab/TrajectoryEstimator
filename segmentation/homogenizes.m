@@ -9,13 +9,13 @@ function mask = homogenizes(mask)
     % fill holes
     mask = imfill(mask, 'holes');
 
-    % Open mask with disk
-    radius = 3;
+    % open mask with disk
+    radius = 5;
     decomposition = 0;
     se = strel('disk', radius, decomposition);
     mask = imopen(mask, se);
 
-    % Close mask with disk
+    % close mask with disk
     radius = 10;
     decomposition = 0;
     se = strel('disk', radius, decomposition);
