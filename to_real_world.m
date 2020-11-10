@@ -1,5 +1,4 @@
 function coordinate = to_real_world(position, radius, camera_model, ball_size)
-    disp(camera_model)
     k = camera_model.Intrinsics.IntrinsicMatrix;
     coordinate = k \ [position 1]';
     
