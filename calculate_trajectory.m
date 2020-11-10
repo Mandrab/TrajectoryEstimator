@@ -1,11 +1,30 @@
-function [outputArg1,outputArg2] = calculate_trajectory(balls)
-    x = [];
-    y = [];
+function points = calculate_trajectory(balls)
+
+    % extracts 2d points TODO maybe move outside
+    points = zeros(length(balls), 2);
     for idx = 1:length(balls)
-        x(idx) = balls(idx).image_position(1);
-        y(idx) = balls(idx).image_position(2);
-        fprintf("x %d y %d\n", x(idx), y(idx));
+        points(idx, :) = balls(idx).image_position;
     end
-    p = polyfit(x,y,2);
-    %plot(x,polyval(p,x));
+    x = points(:, 1);
+    y = points(:, 2);
+    
+    % fit the points with a parabola
+    f0 = polyfit(x, y, 3);
+    
+    % predict next points
+    x1 = linspace(0, 1080, 100); %  TODO image size
+    f1 = polyval(f0, x1);
+    
+    % generate balls 'track' as output
+    %points = [x1' f1'];
+    points = [x1(length(x):end)' f1(length(y):end)'];
+    
+    % drops already passed points from prediction
+    if x(1) > x(end)
+        mask = points(:,1) < x(end);
+    else
+        mask = points(:,1) > x(end);
+    end
+    points = points(mask,:);
+    points = [x y; points];
 end
