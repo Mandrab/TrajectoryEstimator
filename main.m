@@ -41,9 +41,9 @@ function main(images_folder, ball_size, frame_time, camera_model)
         );
         
         % TODO calculate trajectory
-        calculate_trajectory(balls_data);
+        trajectory = calculate_trajectory(balls_data);
         
         % TODO plot result trajectory
-        plot_trajectory(image, balls_data);
+        plot_trajectory(image, trajectory);
     end
 end
