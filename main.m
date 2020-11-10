@@ -1,4 +1,4 @@
-function main(images_folder, ball_size)
+function main(images_folder, ball_size, frame_time, camera_model)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Constants %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -7,9 +7,11 @@ function main(images_folder, ball_size)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    % create a pattern to match images files in folder
-    images = dir(CALIBRATION_FOLDER + "*.png");
-    camera_model = calibration(images, 40);
+    if not(isobject(camera_model))
+        % create a pattern to match images files in folder
+        images = dir(CALIBRATION_FOLDER + "*.png");
+        camera_model = calibration(images, 40);
+    end
 
     %%%%%%%%%%%%%%%%%%%%%%%% Trajectory Estimation %%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27,10 +29,10 @@ function main(images_folder, ball_size)
         [balls_data(idx).image_position, balls_data(idx).image_radius] =...
             ball_position(image);
         
-        % TODO calculate ball speed
-        %balls_data(idx).speed = ???
+        % calculate ball speed
+        %balls_data(idx).speed = 
         
-        % TODO get real world position
+        % get real world position
         balls_data(idx).world_position = to_real_world(...
             balls_data(idx).image_position, ...
             balls_data(idx).image_radius, ...
@@ -39,7 +41,9 @@ function main(images_folder, ball_size)
         );
         
         % TODO calculate trajectory
+        calculate_trajectory(balls_data);
         
         % TODO plot result trajectory
+        plot_trajectory(image, balls_data);
     end
 end
