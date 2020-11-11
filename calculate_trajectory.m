@@ -1,4 +1,9 @@
 function points = calculate_trajectory(balls)
+% Predict the trajectory of the ball
+% Input:
+%   balls: a collection containing the ball's positions and radius
+% Output:
+%   points: the visited and predicted points of the trajectory of the ball
 
     % extracts 2d points TODO maybe move outside
     points = zeros(length(balls), 2);
