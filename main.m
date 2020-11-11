@@ -46,13 +46,12 @@ function camera_model = main(images_folder, trajectory_folder, ...
         % make trajectory prediction if the ball is found
         if not(isnan(ball.image_position))
 
-            % add ball data to set
-            ball.world_position = NaN;
-            balls_data = [balls_data ball];
-
             % get real world position
-            balls_data(end).world_position = to_real_world(...
-                ball.image_position, ball.radius, camera_model, ball_size);
+            ball.world_position = to_real_world(ball.image_position, ...
+                ball.radius, camera_model, ball_size);
+
+            % add ball data to set
+            balls_data = [balls_data ball];
 
             % calculate trajectory based on already loaded data
             trajectory = calculate_trajectory(balls_data);
