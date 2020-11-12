@@ -66,7 +66,8 @@ function camera_model = main(images_folder, trajectory_folder, ...
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             % calculate trajectory based on already loaded data
-            trajectory = calculate_trajectory(balls_data);
+            image_size = camera_model.ImageSize;
+            trajectory = calculate_trajectory(balls_data, image_size);
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % SUB-TASK 5: Results visualization
