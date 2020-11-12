@@ -6,6 +6,9 @@ function points = calculate_trajectory(balls, area_size)
 % Output:
 %   points: the visited and predicted points of the trajectory of the ball
 
+    % area starting point
+    starting_point = 0;
+
     % number to point to evaluate in the range
     point_in_range = 100;
 
@@ -24,7 +27,7 @@ function points = calculate_trajectory(balls, area_size)
     f0 = polyfit(x, y, polinomial_degree);
 
     % predict next points
-    x1 = linspace(0, area_size(1), point_in_range);
+    x1 = linspace(starting_point, area_size(1), point_in_range);
     f1 = polyval(f0, x1);
 
     % generate balls 'track' as output
