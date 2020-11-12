@@ -1,5 +1,5 @@
-function coordinate = to_real_world(position, radius, camera_model, ...
-        ball_size)
+function coordinate = real_world_position(position, radius, ...
+        camera_model, ball_size)
 % From ball position in the image calculate its position in the 'world'
 % Input:
 %   position: the position in the image
@@ -14,5 +14,5 @@ function coordinate = to_real_world(position, radius, camera_model, ...
 
     fx = camera_model.Intrinsics.FocalLength(1);
     z = fx * radius / ball_size;
-    coordinate = [coordinate(1:2)' z]';
+    coordinate = [coordinate(1:2); z'];
 end

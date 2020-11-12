@@ -40,21 +40,37 @@ function camera_model = main(images_folder, trajectory_folder, ...
         image_name = images(idx).folder + "/" + images(idx).name;
         image = imread(image_name);
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % SUB-TASK 1 & 2: Segmenting + ball parameters (image)
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         % search ball position and radius in image
-        [ball.image_position, ball.radius] = ball_data(image);
+        [ball.position, ball.radius] = ball_data(image);
 
         % make trajectory prediction if the ball is found
-        if not(isnan(ball.image_position))
+        if not(isnan(ball.position))
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % SUB-TASK 3: ball parameters (world)
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             % get real world position
-            ball.world_position = to_real_world(ball.image_position, ...
-                ball.radius, camera_model, ball_size);
+            ball.world_position = real_world_position( ...
+                ball.position, ball.radius, camera_model, ball_size);
 
             % add ball data to set
             balls_data = [balls_data ball];
 
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % SUB-TASK 4: Trajectory estimation and prediction
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
             % calculate trajectory based on already loaded data
             trajectory = calculate_trajectory(balls_data);
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % SUB-TASK 5: Results visualization
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             % plot calculated trajectory
             plot_trajectory(image, trajectory);

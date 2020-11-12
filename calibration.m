@@ -1,8 +1,8 @@
-function camera_params = calibration(images_files, chessboard_size)
+function camera_params = calibration(images_files, pattern_size)
 % Calibrate the camera through use of passed calibration images
 % Input:
 %   images_files: files of the calibration images
-%   chessboard_size: size of a square of the chessboard
+%   pattern_size: size of a square of the chessboard
 % Output:
 %   camera_params: parameters of the camera
 
@@ -22,7 +22,7 @@ function camera_params = calibration(images_files, chessboard_size)
     [mrows, ncols, ~] = size(original_image);
 
     % generate world coordinates of the corners of the squares
-    world_points = generateCheckerboardPoints(board_size, chessboard_size);
+    world_points = generateCheckerboardPoints(board_size, pattern_size);
 
     % calibrate the camera
     [camera_params, ~, ~] = estimateCameraParameters( ...
