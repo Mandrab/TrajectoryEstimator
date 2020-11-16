@@ -22,8 +22,8 @@ function coordinate = real_world_position(position, radius, ...
     fx = camera_model.Intrinsics.FocalLength(1);
 
     % calculate distance based on ball size in image and reality
-    z = fx * radius / ball_size;
+    z = fx * ball_size / radius;
 
     % reshape coordinate in form (x,y,z) world
-    coordinate = [z .* coordinate(xy_range); z]
+    coordinate = [z .* coordinate(xy_range); z];
 end
