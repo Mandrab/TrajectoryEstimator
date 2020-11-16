@@ -24,6 +24,6 @@ function coordinate = real_world_position(position, radius, ...
     % calculate distance based on ball size in image and reality
     z = fx * radius / ball_size;
 
-    % reshape coordinate in form (x,y,z)
-    coordinate = [coordinate(xy_range); z'];
+    % reshape coordinate in form (x,y,z) world
+    coordinate = [z .* coordinate(xy_range); z]
 end
