@@ -10,9 +10,15 @@ function plot_trajectory(image, points)
     % marker size in the image
     marker_size = 20;
 
+    % number of information needed to draw the marker (x,y,size)
+    marker_data_size = 3;
+
+    % index of columns
+    x_column = 1;
+
     % create a vector containing x,y coordinate (on image) and circle size
-    positions = zeros(length(points), 3);
-    for idx = 1:length(points(:,1))
+    positions = zeros(length(points), marker_data_size);
+    for idx = 1:length(points(:, x_column))
         positions(idx,:) = [points(idx,:) marker_size];
     end
 

@@ -12,13 +12,21 @@ function mask = homogenizes(mask)
     % open mask with disk
     radius = 5;
     decomposition = 0;
+
+    % create a morphological structuring element
     se = strel('disk', radius, decomposition);
+
+    % execute opening operation
     mask = imopen(mask, se);
 
     % close mask with disk
     radius = 10;
     decomposition = 0;
+
+    % create a morphological structuring element
     se = strel('disk', radius, decomposition);
+
+    %execute closing operation
     mask = imclose(mask, se);
 
 end
