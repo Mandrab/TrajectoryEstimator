@@ -6,7 +6,7 @@ The solution uses a sequence of images representing a ball being thrown toward a
 The images used in the task for the calibration of the camera and the ones representing the trajectories are available at [this link](https://1drv.ms/u/s!AtugSPMAHs8nhB0Fqc61TqDq2rz2?e=n7WKke/). The solution works indeed  with a sequence that has to be already present in a folder. Nevertheless, with just lesser modifications it would be possible to calculate the trajectory in real-time.<br>
 An example of the code behaviour is shown in the image below.
 
-<img src="https://db3pap005files.storage.live.com/y4mzO4nOGGrq8RSA6C7OyFvekv1tabtldkRNMHqwA7-zwMHqD59bTnLRSernGgPEDkeZ1NOxOUDUOOj_JZ-9SRp9v2i-gwuZrB-ZJp-IZq7leVAsPyVJEgMSoS6J-0NeusQJEptNzO_EcfQqhgvuzOd046l7Du63k8TXemd8CYRdZAUkNoNK_GzSDYn_kLs6cVq?width=604&height=480&cropmode=none" width="100%"/>
+<img src="res/traj-1500.gif" width="100%"/>
 
 ## Used tools
 The code has been implemented in MATLAB using some already existing toolboxes. Specifically, the code use the following ones:
